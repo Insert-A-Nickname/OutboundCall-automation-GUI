@@ -183,11 +183,11 @@ class AutomationApp(tk.Tk):
         self.stream.start()
         sd.sleep(100)
         audio_data = np.concatenate(recorded_frames)
-        recordlist=audio_data[-1000000:]
+        recordlist=audio_data[-500000:]
         df=pd.DataFrame(recordlist)
         currentrecord=True
         for i in range(len(df)):
-            if (int(df[0][i])>200):
+            if (int(df[0][i])>1000):
                 currentrecord=False
         print(currentrecord)
         df.to_csv('audio\startingsequence.csv')
@@ -212,7 +212,7 @@ class AutomationApp(tk.Tk):
         b=self.select_app.get()
         df=pd.read_json(config_path,orient="index")
         df.loc[0,"appname"]=b
-        AppName=df["appname"]
+        AppName=df["appname"][0]
         df.to_json(config_path,orient="index")
         print(b)
     def configstate(self):
@@ -479,10 +479,11 @@ class AutomationApp(tk.Tk):
                         self.countdown_end_time = None
                         self.doaudio(name)
                         n=n+1
-                        if n<3:
+                        print(n)
+                        if (n<3):
                             df.loc[comp[0],"Status"]='Unanswered'
-                    if (df.loc[comp[0],"Status"]!='Unanswered'):
-                        df.loc[comp[0],"Status"]='Done'
+                        else:
+                            df.loc[comp[0],"Status"]='Done'
                     self.typing_text.set("Ending Call")
                     pyautogui.moveTo(X3, Y3, duration=0.25)
                     pyautogui.click()
