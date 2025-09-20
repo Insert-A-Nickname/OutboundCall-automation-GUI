@@ -1,0 +1,9 @@
+pywinauto
+pandas
+tkinter
+sounddevice
+pyautogui
+phonenumbers
+numpy
+pyttsx3
+pypdf
