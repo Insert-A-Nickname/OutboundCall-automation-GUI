@@ -41,6 +41,6 @@ possible bugs found through testing:
 - without the proper wimdow-click-setup might skip a call
 - at random might set a call as done while not having done it
 - currently, before starting the automation an item from the treebox has to be clicked
-- sets the text of the itembox to select the window to go in front as the path to the spreafsheet
+- sets the text of the itembox to select the window to go in front as the path to the spreadsheet
 
 
